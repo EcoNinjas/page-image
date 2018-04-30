@@ -10,4 +10,4 @@ RUN gem install --no-document jekyll
 RUN chmod +x /usr/bin/lein
 RUN sh /econinja/update-page.sh
 RUN cd /econinja/server; lein deps
-CMD sh /econinja/update-page.sh; cd /econinja/server; lein run
+CMD sh /econinja/update-page.sh; cd /econinja/server; PAGE_ROOT=/econinja/page/_site lein run
