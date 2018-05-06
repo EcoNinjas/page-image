@@ -13,7 +13,7 @@ echo "Fetching latest content"
 if [ -d "$PAGE_ROOT"/content ]
 then
   cd "$PAGE_ROOT"/content
-  git pull
+  git pull || git reset --hard origin/master
 else
   git clone https://github.com/EcoNinjas/page-content.git "$PAGE_ROOT"/content
 fi
@@ -22,7 +22,7 @@ echo "Fetching latest design & layout"
 if [ -d "$PAGE_ROOT"/design ]
 then
   cd "$PAGE_ROOT"/design
-  git pull
+  git pull || git reset --hard origin/master
 else
   git clone https://github.com/EcoNinjas/page-design.git "$PAGE_ROOT"/design
 fi
