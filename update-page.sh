@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 PAGE_ROOT=/econinja
 
@@ -30,13 +30,10 @@ fi
 echo "Applying webpage updates"
 rsync -r "$PAGE_ROOT"/content/ "$PAGE_ROOT"/page
 rsync -r "$PAGE_ROOT"/design/ "$PAGE_ROOT"/page
-cd "$PAGE_ROOT"/page; bundle install; bundle exec jekyll build
 
-# echo "Upgrading server. Changes in server require a restart."
-# if [ -d "$PAGE_ROOT"/server ]
-# then
-#     cd "$PAGE_ROOT"/server
-#     git pull
-# else
-#     git clone https://github.com/EcoNinjas/page-server.git "$PAGE_ROOT"/server
-# fi
+if [ "$1" == "--firstrun" ]
+then
+   cd "$PAGE_ROOT"/page; bundle install --production --clean --no-cache; bundle exec jekyll build
+else
+    cd "$PAGE_ROOT"/page; bundle exec jekyll build
+fi
