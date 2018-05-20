@@ -1,11 +1,10 @@
 FROM alpine
 # FROM anapsix/alpine-java:8_jdk
 
-RUN apk update
-RUN apk add --no-cache ruby ruby-dev ruby-bundler ruby-json make gcc libc-dev g++ git libffi-dev zlib-dev rsync openjdk8-jre; rm -fr /var/cache/apk/*
+RUN apk --update add --no-cache ruby ruby-dev ruby-bundler ruby-json make gcc libc-dev g++ git libffi-dev zlib-dev rsync openjdk8-jre; rm -fr /var/cache/apk/*
 RUN gem install --no-document jekyll
 
-ADD https://github.com/EcoNinjas/page-image/raw/master/update-page.sh /econinja/update-page.sh
+ADD ./update-page.sh /econinja/update-page.sh
 RUN sh /econinja/update-page.sh --firstrun
 
 RUN mkdir -p /econinja/server

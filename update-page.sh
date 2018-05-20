@@ -33,7 +33,7 @@ rsync -r "$PAGE_ROOT"/design/ "$PAGE_ROOT"/page
 
 if [ "$1" == "--firstrun" ]
 then
-   cd "$PAGE_ROOT"/page; bundle install --production --clean --no-cache; bundle exec jekyll build
+   cd "$PAGE_ROOT"/page; bundle install --clean --no-cache; bundle exec jekyll build
 else
     cd "$PAGE_ROOT"/page; bundle exec jekyll build
 fi
